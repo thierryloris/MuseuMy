@@ -1,0 +1,39 @@
+body {
+    margin: 0px;
+}
+
+.p-2 {
+    padding: 2px;
+}
+
+.p-20 {
+    padding: 20px;
+}
+
+.m-12 {
+    margin: 12px;
+}
+
+.mr-10 {
+    margin-right: 10px;
+}
+
+.flex {
+    display: flex;
+
+    &.justify-space-between {
+        justify-content: space-between;
+    }
+
+    &.justify-center {
+        justify-content: center;
+    }
+
+    &.flex-wrap {
+        flex-wrap: wrap;
+    }
+
+    .col-3 {
+        flex: 1 1 30%;
+    }
+}
