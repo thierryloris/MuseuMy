@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 body {
     margin: 0px;
 }
@@ -10,12 +13,57 @@ body {
     padding: 20px;
 }
 
+.m-auto {
+    margin: auto;
+}
+
 .m-12 {
     margin: 12px;
 }
 
 .mr-10 {
     margin-right: 10px;
+}
+
+.mb-30 {
+    margin-bottom: 30px;
+}
+
+.text-yeseva {
+    font-family: "Yeseva One", serif;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.pt-20 {
+    padding-top: 20px;
+}
+
+.regular-text {
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.h2 {
+    font-size: 30px;
+}
+
+.fit-content {
+    width: fit-content;
+}
+
+.search-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    cursor: pointer;
+}
+
+.relative {
+    position: relative;
 }
 
 .flex {
@@ -36,4 +84,14 @@ body {
     .col-3 {
         flex: 1 1 30%;
     }
+    
+    .col-4 {
+        flex: 1 1 20%;
+    }
+}
+
+.content {
+    background-color: #fafafa;
+    padding-left: 10%;
+    padding-right: 10%;
 }
