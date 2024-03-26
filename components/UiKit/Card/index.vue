@@ -11,7 +11,7 @@ const titleStatus: any = ref(false)
 </script>
 
 <template>
-    <div @mouseover="titleStatus = true" @mouseleave="titleStatus = false" class="card relative col-4 m-12">
+    <div @mouseover="titleStatus = true" @mouseleave="titleStatus = false" class="card pointer relative col-4 m-12">
         <div class="card__image__container">
             <img :src="img"/>
         </div>

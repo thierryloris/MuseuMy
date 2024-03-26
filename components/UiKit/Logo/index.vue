@@ -1,3 +1,3 @@
 <template>
-    <div class="text-yeseva h2">Museumy</div>
+    <div class="text-yeseva h2 decoration-none">Museumy</div>
 </template>

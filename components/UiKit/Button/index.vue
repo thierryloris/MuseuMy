@@ -6,27 +6,26 @@ const {
   color,
   classNames,
   align,
-  onClick,
-  size,
-  link,
-  isTextOnLeft
 } = defineProps<ButtonProps>();
 
 const styles = ButtonStyles({
   color: color ?? "primary",
   align: align ?? "mauto",
-  size: size ?? "medium",
 });
 
-const handleClick = onClick || (() => {});
 </script>
 
 <template>
-  <UiKitLinkOptional :to="link">
-    <button :class="[styles, classNames]" @click="handleClick">
-      <span v-if="isTextOnLeft">{{ label }}</span>
-      <slot name="icon"></slot>
-      <span v-if="!isTextOnLeft">{{ label }}</span>
+    <button class="button pointer" :class="[styles, classNames]">
+      <span>{{ label }}</span>
     </button>
-  </UiKitLinkOptional>
 </template>
+
+<style scoped lang="scss">
+.button {
+    padding: 10px 40px;
+    border-radius: 20px;
+    display: block;
+    border: 0px;
+}
+</style>
