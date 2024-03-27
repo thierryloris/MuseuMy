@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { type ModalProps } from "./types";
-const emit = defineEmits(['modalclose'])
+const emit = defineEmits(["modalclose"]);
 
 const { title, longTitle, img, id } = defineProps<ModalProps>();
 </script>
@@ -9,7 +9,12 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
   <div class="modal">
     <div class="modal__container">
       <div class="modal__core mb-30">
-        <div @click="emit('modalclose')" class="modal__close-button regular-text pointer">X</div>
+        <div
+          @click="emit('modalclose')"
+          class="modal__close-button regular-text pointer"
+        >
+          X
+        </div>
 
         <UiKitObjectContent
           :title="title"
@@ -66,6 +71,15 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
 
     .modal__core__content {
       display: flex;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .modal {
+    display: flex;
+    .modal__container {
+      margin: auto auto 130px auto;
     }
   }
 }
