@@ -4,7 +4,7 @@ import { useCounterStore } from '../../../stores/index'
 
 const { addFavourite } = useCounterStore()
 const route = useRoute();
-const { favourite } = storeToRefs(useCounterStore())
+const { AllFavourites } = storeToRefs(useCounterStore())
 const selectedObject = ref<any>(null);
 
 
@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="page-content">
-    <UiKitHeader :favourite="favourite.length" />
+    <UiKitHeader :favourite="AllFavourites.length" />
     <div class="mt-header">
       <div class="content pt-20">
         <NuxtLink class="decoration-none black" to="/">

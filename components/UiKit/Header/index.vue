@@ -15,7 +15,9 @@ const { favourite } = defineProps<HeaderProps>();
       </NuxtLink>
       <div class="header__favourites">
         <img src="/img/favourite.png" />
-        <span class="counter regular-text">{{ favourite }}</span>
+        <NuxtLink class="decoration-none black" to="/favourites">
+          <span class="counter regular-text">{{ favourite }}</span>
+        </NuxtLink>
       </div>
     </div>
   </div>

@@ -8,7 +8,7 @@ const artObjects = ref<any[]>([]);
 const p = ref(0);
 const selectedObject = ref<any>(null);
 const search = ref("");
-const { favourite } = storeToRefs(useCounterStore());
+const { AllFavourites } = storeToRefs(useCounterStore());
 const { addFavourite } = useCounterStore();
 
 
@@ -56,7 +56,7 @@ onMounted(() => {
 
 <template>
   <div class="page-content">
-    <UiKitHeader :favourite="favourite.length" />
+    <UiKitHeader :favourite="AllFavourites.length" />
     <div class="mt-header">
       <div class="content pt-20 pb-20">
         <div class="relative fit-content m-auto mb-30">

@@ -5,13 +5,15 @@ export const useCounterStore = defineStore({
   state: () => ({
     favourites: <any>[]
   }),
-  persist: true,
+  persist: {
+    storage: persistedState.localStorage,
+  },
   getters: {
-    favourite: (state) => state.favourites
+    AllFavourites: (state) => state.favourites
   },
   actions: {
     addFavourite(favourite: any) {
-      if(!this.favourite.find((element: any) => element.id === favourite.id)) {
+      if(!this.AllFavourites.find((element: any) => element.id === favourite.id)) {
         this.favourites.push(favourite);
       }
     }
