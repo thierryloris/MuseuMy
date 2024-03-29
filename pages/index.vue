@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
+import { storeToRefs } from 'pinia'
+import { useCounterStore } from '../stores/index'
+
 const artObjects: any = ref([]);
 const p = ref(0);
 const selectedObject = ref(null);
 const search = ref("");
+const { favourite } = storeToRefs(useCounterStore())
+
+
 
 const getArt = async (p: any, search?: any) => {
   const data: any = await $fetch(
@@ -47,7 +53,7 @@ onMounted(() => {
 
 <template>
   <div class="page-content">
-    <UiKitHeader />
+    <UiKitHeader :favourite="favourite" />
     <div class="mt-header">
       <div class="content pt-20 pb-20">
         <div class="relative fit-content m-auto mb-30">

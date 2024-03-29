@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { type ModalProps } from "./types";
+import { useCounterStore } from '../../../stores/index'
+
+const { increment } = useCounterStore()
 const emit = defineEmits(["modalclose"]);
 
 const { title, longTitle, img, id } = defineProps<ModalProps>();
@@ -23,7 +26,7 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
         />
       </div>
       <div class="modal__footer flex justify-space-between">
-        <UiKitButton label="Add to favorite" color="primary" />
+        <UiKitButton @click="increment()" label="Add to favorite" color="primary" />
         <UiKitButton
           label="View details"
           @click="navigateTo(`/details/${id}`)"

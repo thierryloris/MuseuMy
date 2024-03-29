@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
+import { useCounterStore } from '../../../stores/index'
 
+const { increment } = useCounterStore()
 const route = useRoute();
+const { favourite } = storeToRefs(useCounterStore())
 const selectedObject = ref(null);
 const getSelectedArt = async () => {
   const data: any = await $fetch(
@@ -19,7 +22,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="page-content">
-    <UiKitHeader />
+    <UiKitHeader :favourite="favourite" />
     <div class="mt-header">
       <div class="content pt-20">
         <NuxtLink class="decoration-none black" to="/">
@@ -33,7 +36,7 @@ onMounted(() => {
             :categories="selectedObject.materials"
           />
           <div class="flex justify-space-between pb-20">
-            <UiKitButton label="Add to favorite" color="primary" />
+            <UiKitButton @click="increment()" label="Add to favorite" color="primary" />
           </div>
         </template>
       </div>
