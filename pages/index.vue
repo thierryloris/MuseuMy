@@ -10,6 +10,7 @@ const selectedObject = ref<any>(null);
 const search = ref("");
 const { favourite } = storeToRefs(useCounterStore());
 
+//GET all the artObjects from the api
 const getArt = async (page: number, searchTerm?: string) => {
   const data: apiResponse = await $fetch(
     "https://www.rijksmuseum.nl/api/nl/collection",
@@ -17,12 +18,15 @@ const getArt = async (page: number, searchTerm?: string) => {
       query: { key: "k0bA6D3z", p: page, ps: 15, imgonly: true, q: searchTerm },
     }
   );
+
+  //Pagination management
   artObjects.value =
     page === 0
       ? data.artObjects || []
       : [...artObjects.value, ...data.artObjects];
 };
 
+//GET one artObject from the api
 const getSelectedArt = async (id: string) => {
   const data: any = await $fetch(
     `https://www.rijksmuseum.nl/api/nl/collection/${id}`,

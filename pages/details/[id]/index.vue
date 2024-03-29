@@ -5,7 +5,9 @@ import { useCounterStore } from '../../../stores/index'
 const { increment } = useCounterStore()
 const route = useRoute();
 const { favourite } = storeToRefs(useCounterStore())
-const selectedObject = ref(null);
+const selectedObject = ref<any>(null);
+
+
 const getSelectedArt = async () => {
   const data: any = await $fetch(
     `https://www.rijksmuseum.nl/api/nl/collection/${route.params.id}`,
