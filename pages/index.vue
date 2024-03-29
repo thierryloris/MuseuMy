@@ -1,29 +1,26 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { storeToRefs } from 'pinia'
-import { useCounterStore } from '../stores/index'
+import { storeToRefs } from "pinia";
+import { useCounterStore } from "../stores/index";
+import type { apiResponse, artObject } from "../types/index"
 
-const artObjects: any = ref([]);
+const artObjects = ref<any[]>([]);
 const p = ref(0);
-const selectedObject = ref(null);
+const selectedObject = ref<any>(null);
 const search = ref("");
-const { favourite } = storeToRefs(useCounterStore())
+const { favourite } = storeToRefs(useCounterStore());
 
-
-
-const getArt = async (p: any, search?: any) => {
-  const data: any = await $fetch(
+const getArt = async (page: number, searchTerm?: string) => {
+  const data: apiResponse = await $fetch(
     "https://www.rijksmuseum.nl/api/nl/collection",
     {
-      query: { key: "k0bA6D3z", p, ps: 15, imgonly: true, q: search },
+      query: { key: "k0bA6D3z", p: page, ps: 15, imgonly: true, q: searchTerm },
     }
   );
-  if (artObjects.value) {
-    const temp = [].concat(artObjects.value, data.artObjects);
-    artObjects.value = temp
-  } else {
-    artObjects.value = data.artObjects || [];
-  }
+  artObjects.value =
+    page === 0
+      ? data.artObjects || []
+      : [...artObjects.value, ...data.artObjects];
 };
 
 const getSelectedArt = async (id: string) => {
@@ -42,7 +39,7 @@ const loadMore = () => {
 };
 
 const searchByMaker = () => {
-  artObjects.value = null;
+  artObjects.value = [];
   getArt(p.value, search.value);
 };
 
@@ -59,7 +56,6 @@ onMounted(() => {
         <div class="relative fit-content m-auto mb-30">
           <UiKitInput
             v-model="search"
-            class="mr-10"
             label="Recherche"
             placeholder="Search anything..."
           >
