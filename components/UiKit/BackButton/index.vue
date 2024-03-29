@@ -8,6 +8,7 @@
 <style lang="scss" scoped>
 .back-button {
     display: flex;
+    margin-left: 25px;
     img {
         margin-right: 8px;
     }

@@ -11,7 +11,7 @@ const model = defineModel()
 </script>
 
 <template>
-    <input class="input" type="text" :label="label" v-model="model" :placeholder="placeholder" />
+    <input class="input regular-text" type="text" :label="label" v-model="model" :placeholder="placeholder" />
     <slot name="suffix"></slot>
 </template>
 

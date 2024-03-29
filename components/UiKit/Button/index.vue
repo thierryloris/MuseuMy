@@ -28,4 +28,9 @@ const styles = ButtonStyles({
     display: block;
     border: 0px;
 }
+@media screen and (max-width: 768px) {
+  .button {
+    width: 100%;
+  }
+}
 </style>

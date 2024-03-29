@@ -3,15 +3,17 @@ import { defineStore } from 'pinia'
 export const useCounterStore = defineStore({
   id: 'counter',
   state: () => ({
-    counter: 0
+    favourites: <any>[]
   }),
   persist: true,
   getters: {
-    favourite: (state) => state.counter
+    favourite: (state) => state.favourites
   },
   actions: {
-    increment() {
-      this.counter++;
+    addFavourite(favourite: any) {
+      if(!this.favourite.find((element: any) => element.id === favourite.id)) {
+        this.favourites.push(favourite);
+      }
     }
   },
 })

@@ -2,7 +2,7 @@
 import { onMounted } from "vue";
 import { useCounterStore } from '../../../stores/index'
 
-const { increment } = useCounterStore()
+const { addFavourite } = useCounterStore()
 const route = useRoute();
 const { favourite } = storeToRefs(useCounterStore())
 const selectedObject = ref<any>(null);
@@ -24,7 +24,7 @@ onMounted(() => {
 </script>
 <template>
   <div class="page-content">
-    <UiKitHeader :favourite="favourite" />
+    <UiKitHeader :favourite="favourite.length" />
     <div class="mt-header">
       <div class="content pt-20">
         <NuxtLink class="decoration-none black" to="/">
@@ -38,7 +38,7 @@ onMounted(() => {
             :categories="selectedObject.materials"
           />
           <div class="flex justify-space-between pb-20">
-            <UiKitButton @click="increment()" label="Add to favorite" color="primary" />
+            <UiKitButton @click="addFavourite(selectedObject)" label="Add to favorite" color="primary" />
           </div>
         </template>
       </div>

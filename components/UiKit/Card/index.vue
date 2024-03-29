@@ -13,7 +13,7 @@ const titleStatus: any = ref(false);
     class="card pointer relative col-4 m-12"
   >
     <div class="card__image__container">
-      <img :src="img" />
+      <NuxtImg loading="lazy" :src="img" />
     </div>
     <div :class="titleStatus ? '--hover' : ''" class="card__title regular-text">
       {{ title }}
@@ -46,7 +46,7 @@ const titleStatus: any = ref(false);
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 925px) {
   .card {
     img {
       height: 150px;

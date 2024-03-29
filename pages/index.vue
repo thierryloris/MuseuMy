@@ -2,13 +2,15 @@
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useCounterStore } from "../stores/index";
-import type { apiResponse, artObject } from "../types/index"
+import type { apiResponse, artObject } from "../types/index";
 
 const artObjects = ref<any[]>([]);
 const p = ref(0);
 const selectedObject = ref<any>(null);
 const search = ref("");
 const { favourite } = storeToRefs(useCounterStore());
+const { addFavourite } = useCounterStore();
+
 
 //GET all the artObjects from the api
 const getArt = async (page: number, searchTerm?: string) => {
@@ -54,7 +56,7 @@ onMounted(() => {
 
 <template>
   <div class="page-content">
-    <UiKitHeader :favourite="favourite" />
+    <UiKitHeader :favourite="favourite.length" />
     <div class="mt-header">
       <div class="content pt-20 pb-20">
         <div class="relative fit-content m-auto mb-30">
@@ -70,7 +72,7 @@ onMounted(() => {
             </template>
           </UiKitInput>
         </div>
-        <div class="h2 text-center text-yeseva">All Works</div>
+        <div class="h2 text-center mb-30 text-yeseva">All Works</div>
         <div class="flex flex-wrap justify-space-between">
           <template
             v-if="artObjects && artObjects.length"
@@ -85,7 +87,9 @@ onMounted(() => {
             />
           </template>
         </div>
-        <UiKitButton label="Load more" color="primary" @click="loadMore()" />
+        <div class="m-12">
+          <UiKitButton label="Load more" color="primary" @click="loadMore()" />
+        </div>
       </div>
       <UiKitModal
         v-if="selectedObject"
@@ -94,6 +98,7 @@ onMounted(() => {
         :img="selectedObject.webImage.url"
         :id="selectedObject.objectNumber"
         @modalclose="selectedObject = null"
+        @addtofavourite="addFavourite(selectedObject)"
       />
     </div>
   </div>

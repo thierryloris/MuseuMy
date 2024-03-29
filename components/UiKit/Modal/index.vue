@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { type ModalProps } from "./types";
-import { useCounterStore } from '../../../stores/index'
 
-const { increment } = useCounterStore()
-const emit = defineEmits(["modalclose"]);
+const emit = defineEmits(["modalclose", "addtofavourite"]);
 
 const { title, longTitle, img, id } = defineProps<ModalProps>();
 </script>
@@ -26,7 +24,11 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
         />
       </div>
       <div class="modal__footer flex justify-space-between">
-        <UiKitButton @click="increment()" label="Add to favorite" color="primary" />
+        <UiKitButton
+          @click="emit('addtofavourite')"
+          label="Add to favorite"
+          color="primary"
+        />
         <UiKitButton
           label="View details"
           @click="navigateTo(`/details/${id}`)"
@@ -41,7 +43,7 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
 .modal {
   display: block;
   position: fixed;
-  z-index: 1;
+  z-index: 10;
   padding-top: 100px;
   left: 0;
   top: 0;
@@ -59,7 +61,7 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
     width: 65%;
     border-radius: 20px;
     position: relative;
-    height: 500px;
+    height: 600px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -75,6 +77,11 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
     .modal__core__content {
       display: flex;
     }
+
+    .modal__footer {
+      width: 50%;
+      margin: 0 auto;
+    }
   }
 }
 
@@ -83,6 +90,14 @@ const { title, longTitle, img, id } = defineProps<ModalProps>();
     display: flex;
     .modal__container {
       margin: auto auto 130px auto;
+      width: 80%;
+      .modal__footer {
+        display: block;
+        width: 100%;
+        .button {
+          margin-bottom: 5px;
+        }
+      }
     }
   }
 }

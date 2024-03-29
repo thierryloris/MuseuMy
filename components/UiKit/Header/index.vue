@@ -3,7 +3,6 @@ import { type HeaderProps } from "./types";
 
 const { favourite } = defineProps<HeaderProps>();
 
-const titleStatus: any = ref(false);
 </script>
 
 <template>

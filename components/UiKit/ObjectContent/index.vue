@@ -6,15 +6,20 @@ const { title, description, img, categories } = defineProps<ModalProps>();
 <template>
   <div class="p-20">
     <div class="page__content flex">
-      <img class="m-12" :src="img" />
+      <NuxtImg class="m-12" :src="img" />
       <div class="object__content m-12">
-        <div class="title h2 m-12">{{ title }}</div>
-        <div class="description m-12 regular-text ellipsis">{{ description }}</div>
-        <div v-if="categories" class="flex">
-            <div class="" v-for="category in categories">
-               <UiKitTag :label="category" />
-            </div>
+        <div class="title h2 m-12 text-yeseva">{{ title }}</div>
+        <div class="description m-12 regular-text ellipsis text-justify">
+          {{ description }}
         </div>
+        <template v-if="categories">
+          <div class="title h2 m-12 text-yeseva">Categories</div>
+          <div class="flex">
+            <div v-for="category in categories">
+              <UiKitTag :label="category" />
+            </div>
+          </div>
+        </template>
       </div>
     </div>
   </div>
@@ -27,10 +32,13 @@ const { title, description, img, categories } = defineProps<ModalProps>();
   object-fit: cover;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 568px) {
   .page__content {
     display: block;
-    text-align: center
+    text-align: center;
+    img {
+      max-width: 65%;
+    }
   }
 }
 </style>
