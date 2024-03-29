@@ -67,7 +67,7 @@ onMounted(() => {
           >
             <template v-slot:suffix>
               <div class="search-icon" @click="searchByMaker()">
-                <img src="/img/loupe.png" />
+                <font-awesome-icon class="lightgrey" :icon="['fas', 'magnifying-glass']" />
               </div>
             </template>
           </UiKitInput>

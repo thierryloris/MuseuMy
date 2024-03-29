@@ -2,7 +2,6 @@
 import { type HeaderProps } from "./types";
 
 const { favourite } = defineProps<HeaderProps>();
-
 </script>
 
 <template>
@@ -14,7 +13,7 @@ const { favourite } = defineProps<HeaderProps>();
         </div>
       </NuxtLink>
       <div class="header__favourites">
-        <img src="/img/favourite.png" />
+        <font-awesome-icon class="icon-svg" :icon="['fas', 'heart']" />
         <NuxtLink class="decoration-none black" to="/favourites">
           <span class="counter regular-text">{{ favourite }}</span>
         </NuxtLink>
@@ -33,11 +32,14 @@ const { favourite } = defineProps<HeaderProps>();
   top: 0px;
   .header__favourites {
     position: relative;
+    .icon-svg {
+      height: 30px;
+      color: lightgrey;
+    }
     .counter {
       position: absolute;
-      top: 6px;
-      right: 12px;
-      color: black;
+      top: 5px;
+      right: 11px;
     }
   }
 }
